@@ -2,7 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build master') {
+            when {
+                expression {
+                    BRANCH_NAME == 'master'
+                }
+            }
+            steps {
+                echo "conditional branch ${env.BRANCH_NAME}"
+            }
+        }
+        stage('Build others') {
             steps {
                 echo "branch ${env.BRANCH_NAME}"
             }
