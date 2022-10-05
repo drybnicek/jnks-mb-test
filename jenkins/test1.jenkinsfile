@@ -2,19 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Build master') {
+            when {
+                expression {
+                    BRANCH_NAME == 'master'
+                }
+            }
             steps {
-                sh 'echo test3 > file.txt'
+                echo "conditional branch ${env.BRANCH_NAME}"
             }
         }
-        stage('Test') {
+        stage('Build others') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo "branch ${env.BRANCH_NAME}"
             }
         }
     }
