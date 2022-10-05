@@ -4,9 +4,10 @@ pipeline {
     stages {
         stage('Build master') {
             when {
-                expression {
+              /*  expression {
                     BRANCH_NAME == 'master'
-                }
+                } */
+                branch 'master'
             }
             steps {
                 echo "conditional branch ${env.BRANCH_NAME}"
