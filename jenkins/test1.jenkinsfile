@@ -25,9 +25,9 @@ pipeline {
             }
         }
     }
-    post {
+    /*post {
         always {
             step(fingerprint: true, artifacts: "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log", followSymlinks: false, $class: 'ArtifactArchiver', onlyIfSuccessful: false)
         }
-    }
+    }*/
 }
