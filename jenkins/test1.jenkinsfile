@@ -18,5 +18,19 @@ pipeline {
                 echo "branch ${env.BRANCH_NAME}"
             }
         }
+        stage ('Start next build job') {
+            steps {
+                build job: 'mb-test2/test4', wait: false
+                // build job: "RouvyApp/Development/Android/${BRANCH_NAME}", wait: false
+            }
+        }
+    }
+    post {
+        always {
+            step(fingerprint: true, artifacts: "${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log", followSymlinks: false, $class: 'ArtifactArchiver', onlyIfSuccessful: false)
+        }
     }
 }
+
+
+${JENKINS_HOME}/jobs/${JOB_NAME}/builds/${BUILD_NUMBER}/log
