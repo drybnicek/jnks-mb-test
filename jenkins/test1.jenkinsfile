@@ -20,7 +20,7 @@ pipeline {
         }
         stage ('Start next build job') {
             steps {
-                build job: 'mb-test2/test4', wait: false
+                build job: 'mb-test2/test5', wait: false
                 // build job: "RouvyApp/Development/Android/${BRANCH_NAME}", wait: false
             }
         }
